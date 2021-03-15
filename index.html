@@ -1,0 +1,572 @@
+<html>
+<head>
+<title>Hackerspage</title>
+    <style>
+
+canvas {display: block;}
+#overlay 
+{
+  background-color: #e2e2e2f5;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 999
+}
+.cantan 
+{
+position: fixed;
+top: 50%;
+left: 50%;
+transform:translate(-50%,-50%);
+
+letter-spacing:5px;
+text-transform:uppercase;
+text-decoration:none;
+box-shadow:0 20px 50px rgba(0,0,0,.5);
+overflow:hidden;
+
+}
+
+.bgg{
+
+  background: repeating-linear-gradient(90deg,#060606, #000000a6);
+}
+.bg 
+{
+  width: 900px;
+  height: 500px;
+
+  background: repeating-linear-gradient(90deg,#060606, #00000080);
+}
+.pic{
+  width: 900px;
+  height: 500px;
+  background-image: url("za.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+
+}
+.database:hover{
+  color: #d02828;
+  border: solid 1px #d02828;
+
+}
+.database{
+    height: 20px;
+    width: 135px;
+    text-align: center;
+    /* padding: 5; */
+    color: #afaf22;
+    font-family: monospace;
+    font-size: 12px;
+    background: none;
+    /* padding-left: 3px; */
+    /* padding-right: 3px; */
+    position: fixed;
+    top: 83%;
+    left: 10.4%;
+    border: solid 1px #d0d028;
+    transform: translate(-50%,-50%);
+}
+
+.aa{
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%,-50%);
+color:#1670f0;
+padding:30px;
+letter-spacing:2px;
+text-transform:uppercase;
+text-decoration:none;
+box-shadow:0 20px 50px rgba(0,0,0,.5);
+overflow:hidden;
+}
+.a:before
+{
+content: '';
+position: absolute;
+top: 2px;
+left: 2px;
+bottom: 2px;
+width: 50%;
+background: rgba(255,255,255,0.05);
+}
+.a span:nth-child(1)
+{
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 5px;
+background: linear-gradient(to right,#2b2700,#585656f5);
+animation: animate1 2s linear infinite;
+}
+@keyframes animate1
+{
+ 0%
+ {
+   transform:translateX(-100%);
+ 
+ }
+ 100%
+ {
+   transform:translateX(100%);
+ 
+ }
+}
+.a span:nth-child(2)
+{
+position: absolute;
+top: 0;
+right: 0;
+width: 5px;
+height: 100%;
+background: linear-gradient(to bottom,#2b2700,#585656f5);
+animation: animate2 2s linear infinite;
+animation-delay: 1s;
+}
+@keyframes animate2 
+{
+ 0%
+ {
+   transform:translateY(-100%);
+ 
+ }
+ 100%
+ {
+   transform:translateY(100%);
+ 
+ }
+}
+.a span:nth-child(3)
+{
+position: absolute;
+bottom: 0;
+left: 0;
+width: 100%;
+height: 5px;
+background: linear-gradient(to left,#2b2700,#585656f5);
+animation: animate3 2s linear infinite;
+}
+@keyframes animate3
+{
+ 0%
+ {
+   transform:translateX(100%);
+ 
+ }
+ 100%
+ {
+   transform:translateX(-100%);
+ 
+ }
+}
+.a span:nth-child(4)
+{
+position: absolute;
+top: 0;
+left: 0;
+width: 5px;
+height: 100%;
+background: linear-gradient(to top,#2b2700,#585656f5);
+animation: animate4 2s linear infinite;
+animation-delay: 1s;
+}
+@keyframes animate4 
+{
+ 0%
+ {
+   transform:translateY(100%);
+ 
+ }
+ 100%
+ {
+   transform:translateY(-100%);
+ 
+ }
+}
+.virusbox{
+    background: none;
+    position: fixed;
+    top: 45%;
+    left: 85%;
+    transform: translate(-50%,-50%);
+
+}
+.box:hover{
+  font-size: 25px;
+
+  border: solid 1px #d02828;
+}
+.box{
+    height: 35px;
+    width: 200px;
+    text-align: center;
+    margin-top: 10px;
+    /* padding: 5; */
+    color: #f1f1f1;
+    font-family: monospace;
+    font-size: 20px;
+    background: none;
+    border: solid 1px #d0d028;
+}
+.hide{
+  display: none;
+}
+.passbg{
+  display: none;
+}
+.passin{
+    width: 300px;
+    height: 35px;
+    font-size: 15px;
+    text-align: center;
+    overflow: hidden;
+    outline: none;
+    border: none;
+    border-radius:10px 10px 0 0;
+    margin: 0;
+}
+.loging:hover{
+    font-size: 16px;
+    background: #793333;
+}
+.loging{
+    width: 300px;
+    height: 35px;
+    font-size: 15px;
+    background: #585858;
+    overflow: hidden;
+    outline: none;
+    border: none;
+    border-radius: 0 0 10px 10px;
+    margin: 0;
+    color: white;
+}
+.time10{
+  text-align: center;
+  font-size: 15px;
+  color: white;
+  margin-bottom: 10px;
+}
+.boxes2{
+  display: none;
+}
+</style>
+
+</head>
+    <body>
+
+    <div id='overlay'>
+      <canvas id="c"></canvas>
+      <div class='cantan'>
+        <div class="passbg">
+          <div class="time10">verification time 15S</div>
+          <input class="passin" type="password" name="password" placeholder="Password"/>
+          <br>
+          <button class="loging">LOGING</button>
+        </div>
+        <div class='bg a'>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+          <img class="pic"/>
+          <button class="database">BECOME DATABASE US</button>
+      <div class="virusbox boxes">
+      <button class="box thevirus">THE VIRUS</button>
+      <button class="box">DATABASE</button>
+      <button class="box">COMTECTS</button>
+      </div>
+      <div class="virusbox boxes2">  
+      <button class="box">APPLICATIONS</button>
+      <button class="box">SOFTWARES</button>
+      <button class="box">EXTENSIONS</button>
+      <button class="box back">BACK</button>
+      </div>
+        </div>  
+      
+      </div>
+    </div>
+
+    </body>
+    <script>
+
+var c = document.getElementById("c");
+var ctx = c.getContext("2d");
+
+//making the canvas full screen
+c.height = window.innerHeight;
+c.width = window.innerWidth;
+
+//english characters
+var english = "1001010101110101010101010010101000101011101111010101010110101010101010101110000101";
+//converting the string into an array of single characters
+english = english.split("");
+
+var font_size = 15;
+var columns = c.width/font_size; //number of columns for the rain
+//an array of drops - one per column
+var drops = [];
+//x below is the x coordinate
+//1 = y co-ordinate of the drop(same for every drop initially)
+for(var x = 0; x < columns; x++)
+  drops[x] = 1; 
+
+//drawing the characters
+function draw()
+{
+  //Black BG for the canvas
+  //translucent BG to show trail
+  ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+  ctx.fillRect(0, 0, c.width, c.height);
+  
+  ctx.fillStyle = "#585656f5"; //green textcolor: #1f2122;
+  ctx.font = font_size + "px arial";
+  //looping over drops
+  for(var i = 0; i < drops.length; i++)
+  {
+    //a random chinese character to print
+    var text = english[Math.floor(Math.random()*english.length)];
+    //x = i*font_size, y = value of drops[i]*font_size
+    ctx.fillText(text, i*font_size, drops[i]*font_size);
+    
+    //sending the drop back to the top randomly after it has crossed the screen
+    //adding a randomness to the reset to make the drops scattered on the Y axis
+    if(drops[i]*font_size > c.height && Math.random() > 0.975)
+      drops[i] = 0;
+    
+    //incrementing Y coordinate
+    drops[i]++;
+  }
+}
+
+setInterval(draw, 33);
+
+//permission
+function notallawed() {
+    function disableSelection(e) {
+        if (typeof e.onselectstart != "undefined") e.onselectstart = function() {
+            return false
+        };
+        else if (typeof e.style.MozUserSelect != "undefined") e.style.MozUserSelect = "none";
+        else e.onmousedown = function() {
+            return false
+        };
+        e.style.cursor = "default"
+    }
+    window.onload = function() {
+        disableSelection(document.body)
+    };
+
+    window.addEventListener("keydown", function(e) {
+        if (e.ctrlKey && (e.which == 65 || e.which == 66 || e.which == 67 || e.which == 70 || e.which == 73 || e.which == 80 || e.which == 83 || e.which == 85 || e.which == 86)) {
+            e.preventDefault()
+        }
+    });
+    document.keypress = function(e) {
+        if (e.ctrlKey && (e.which == 65 || e.which == 66 || e.which == 70 || e.which == 67 || e.which == 73 || e.which == 80 || e.which == 83 || e.which == 85 || e.which == 86)) {}
+        return false
+    };
+
+    document.onkeydown = function(e) {
+        e = e || window.event;
+        if (e.keyCode == 123 || e.keyCode == 18) {
+            return false
+        }
+    };
+
+    document.oncontextmenu = function(e) {
+      alert("☠ Sorry!");
+        var t = e || window.event;
+        var n = t.target || t.srcElement;
+        if (n.nodeName != "A") return false
+    };
+    document.ondragstart = function() {
+        return false
+    };
+};
+notallawed();
+
+document.querySelector("body").addEventListener('click',openpass);
+function openpass() {
+  something();
+}
+document.querySelector(".passin").addEventListener('click',verificationfun);
+document.querySelector(".thevirus").addEventListener('click',thevirusfun);
+
+document.querySelector(".back").addEventListener('click',backfun);
+
+
+function backfun() {
+  document.querySelector(".boxes").style["display"]="block";
+  document.querySelector(".boxes2").style["display"]="none";
+}
+
+function thevirusfun() {
+  document.querySelector(".boxes").style["display"]="none";
+  document.querySelector(".boxes2").style["display"]="block";
+}
+
+var something = (function() {
+    var executed = false;
+    return function() {
+        if (!executed) {
+            executed = true;
+            //alert("ok");
+            document.querySelector(".bg").style["display"]="none";
+            document.querySelector(".passbg").style["display"]="block";
+        }
+    };
+})();
+function verificationfun() {
+  verificationrun();
+  logingpage();
+}
+function logingpage() {
+  document.querySelector(".loging").addEventListener('click',youloging);
+
+}
+function youloging() {
+  const passuer = document.querySelector(".passin").value;
+  const pin = "711205";
+  if (passuer == pin) {   
+    removepage = (function() {
+      document.querySelector(".bg").style["display"]="block";
+      document.querySelector(".passbg").style["display"]="none";
+    })();
+  }
+  else { 
+    //document.querySelector(".time10").innerText = "WRONG PASSWORD☠";
+    document.querySelector(".passin").value="";
+  }
+}
+
+
+var verificationrun = (function() {
+    var executed = false;
+    return function() {
+        if (!executed) {
+            executed = true;
+            let timer = 1000;
+for (var i = 0; i <1 ; i++) {
+
+  setTimeout(()=>{
+    document.querySelector(".time10").innerText = "verification time 14S";
+  },timer)
+  //add extra time
+  timer +=1000;
+
+  setTimeout(()=>{
+    document.querySelector(".time10").innerText = "verification time 13S";
+  },timer)
+  //add extra time
+  timer +=1000;
+
+  setTimeout(()=>{
+    document.querySelector(".time10").innerText = "verification time 12S";
+  },timer)
+  //add extra time
+  timer +=1000;
+
+  setTimeout(()=>{
+    document.querySelector(".time10").innerText = "verification time 11S";
+  },timer)
+  //add extra time
+  timer +=1000;
+  setTimeout(()=>{
+    document.querySelector(".time10").innerText = "verification time 10S";
+  },timer)
+  //add extra time
+  timer +=1000;
+
+  setTimeout(()=>{
+    document.querySelector(".time10").innerText = "verification time 9S";
+  },timer)
+  //add extra time
+  timer +=1000;
+
+  setTimeout(()=>{
+    document.querySelector(".time10").innerText = "verification time 8S";
+  },timer)
+  //add extra time
+  timer +=1000;
+
+  setTimeout(()=>{
+    document.querySelector(".time10").innerText = "verification time 7S";
+  },timer)
+  //add extra time
+  timer +=1000;
+
+  setTimeout(()=>{
+    document.querySelector(".time10").innerText = "verification time 6S";
+  },timer)
+  //add extra time
+  timer +=1000;
+
+  setTimeout(()=>{
+    document.querySelector(".time10").innerText = "verification time 5S";
+  },timer)
+  //add extra time
+  timer +=1000;
+
+  setTimeout(()=>{
+    document.querySelector(".time10").innerText = "verification time 4S";
+  },timer)
+  //add extra time
+  timer +=1000;
+
+  setTimeout(()=>{
+    document.querySelector(".time10").innerText = "verification time 3S";
+  },timer)
+  //add extra time
+  timer +=1000;
+
+  setTimeout(()=>{
+    document.querySelector(".time10").innerText = "verification time 2S";
+  },timer)
+  //add extra time
+  timer +=1000;
+
+  setTimeout(()=>{
+    document.querySelector(".time10").innerText = "verification time 1S";
+  },timer)
+  //add extra time
+  timer +=1000;
+
+  setTimeout(()=>{
+    document.querySelector(".time10").innerText = "verification time 0S";
+    displayblock();
+  },timer)
+  //add extra time
+  timer +=1000;
+ }
+
+        }
+    };
+})();
+
+function displayblock() {
+  removepage();
+  document.querySelector("html").remove();
+}
+
+var removepage = (function() {
+    var executed = false;
+    return function() {
+        if (!executed) {
+            executed = true;
+            //alert("ok");
+            document.querySelector("html").remove();
+        }
+    };
+})();
+
+
+    </script>
+</html>
